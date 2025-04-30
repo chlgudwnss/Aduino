@@ -14,7 +14,7 @@ void loop()
   Serial.print("ad_input = ");
   Serial.print(ad_input);
   
-  if(ad_input >= 500)
+  if(ad_input <= 500)
   {
     digitalWrite(LED_BUILTIN, HIGH);
     delay(1000);
