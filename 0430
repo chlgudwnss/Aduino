@@ -17,10 +17,12 @@ void loop()
   if(ad_input <= 500)
   {
     digitalWrite(LED_BUILTIN, HIGH);
-    delay(1000);
+    delay(500);
   }
   
   else
+	{
     digitalWrite(LED_BUILTIN, LOW);
-  	delay(1000);
+  	delay(500);
+  }
 }
