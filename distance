@@ -1,0 +1,78 @@
+// C++ code
+//
+
+int EN1 = 5;
+int EN2 = 6;
+
+int IN1 =2;
+int IN2 =3;
+
+int IN3 = 7;
+int IN4 = 8;
+
+int TRIG = 10;
+int ECHO = 11;
+void setup()
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+  
+  pinMode(EN1, OUTPUT);
+  pinMode(EN2, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+  Serial.begin(9600); 
+}
+
+
+
+void loop()
+{
+  
+  long duration, distance;
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  
+  duration = pulseIn (ECHO, HIGH);
+  Serial.println(duration ); 
+  Serial.print("\nDIstance : ");
+  Serial.print(distance); 
+  Serial.println(" Cm");
+  digitalWrite(TRIG, LOW);
+  duration = pulseIn(ECHO, HIGH);
+  distance = duration * 17 / 1000;
+  
+  
+ 
+  
+  if(distance <= 20)
+  {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(EN1, 0);
+  delay(1000); // Wait for 1000 millisecond(s)
+  
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  digitalWrite(EN2, 0);
+  delay(1000); // Wait for 1000 millisecond(s)
+	}
+  
+  else if(distance > 20)
+  {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(EN1, 213);
+  delay(1000); // Wait for 1000 millisecond(s)
+  
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  digitalWrite(EN2, 215);
+  delay(1000); // Wait for 1000 millisecond(s)
+  }
+}
